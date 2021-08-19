@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class User extends Controller
 {
     function create(Request $request) {
+        echo "hii";
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $entries = array('first_name' => $first_name, 'last_name' => $last_name);
@@ -17,10 +21,11 @@ class User extends Controller
 
     function get($id=''){
         if($id!=''){
-            $users = DB::table('users')->where('id', '=', $id)->get();
-
-        } else {
+         } else {
             $users = DB::table('users')->select('id', 'first_name', 'last_name')->get();
+        }
+        foreach ($users as $user) {
+            print_r($user);
         }
     }
 }

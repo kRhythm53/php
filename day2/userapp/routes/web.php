@@ -17,7 +17,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/user', [User::class, 'create']);
-Route::delete('/user/{id}', [User::class, 'delete']);
-Route::get('/user', [User::class, 'get']);
-Route::get('/user/{id}', [User::class, 'get']);
