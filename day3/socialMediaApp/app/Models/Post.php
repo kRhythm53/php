@@ -25,5 +25,4 @@ class Post extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-
 }

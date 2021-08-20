@@ -2,21 +2,21 @@
 namespace App\Http\Controllers;
 use App\Services\CommentService;
 use Illuminate\Http\Request;
-
 Class Comment extends Controller
 {
-    private $commentObject;
+    private $commentService;
+    public function __construct()
+    {
+        $this->commentService = new CommentService();
+    }
     function createComment($user_id,$post_id,Request $request)
     {
-
         $body = $request->body;
-        echo $body;
-        $commentObj = new CommentService();
-        return $commentObj->createNewComment($user_id,$post_id,$body);
+        $data = $request->all();
+        return $this->commentService->createNewComment($user_id,$post_id,$body,$data);
     }
     function getComments($post_id)
     {
-        $commentObj = new CommentService();
-        return $commentObj->getAllComments($post_id);
+        return $this->commentService->getAllComments($post_id);
     }
 }

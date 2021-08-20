@@ -22,7 +22,7 @@ class CreateCommentTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')
                 ->on('user')->onDelete('cascade');
-            $table->multiLineString('body');
+            $table->text('body');
         });
     }
 
